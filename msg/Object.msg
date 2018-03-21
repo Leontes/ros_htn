@@ -1,0 +1,3 @@
+string objName
+
+string objType
