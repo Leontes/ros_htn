@@ -3,30 +3,15 @@
 #include <ros_htn/GetPlan.h>
 #include <ros_htn/PlanningProblem.h>
 
-#include <cstdio>
-#include <memory>
-#include <stdexcept>
-#include <string>
-#include <array>
 #include <vector>
 #include <fstream>
+
+#include "executecommand.hpp"
 
 std::string domain, path;
 
 std::string delimiter = ":action ";
 
-
-std::string exec(std::string cmd) {
-    std::array<char, 128> buffer;
-    std::string result;
-    std::shared_ptr<FILE> pipe(popen(cmd.c_str(), "r"), pclose);
-    if (!pipe) throw std::runtime_error("popen() failed!");
-    while (!feof(pipe.get())) {
-        if (fgets(buffer.data(), 128, pipe.get()) != nullptr)
-            result += buffer.data();
-    }
-    return result;
-}
 
 void saveProblem(ros_htn::PlanningProblem problem){
 
@@ -77,6 +62,7 @@ bool plan(ros_htn::GetPlan::Request &req, ros_htn::GetPlan::Response &resp){
   saveProblem(req.problem);
 
   std::string outPlan,token;
+  ROS_INFO_STREAM(path + std::string("/htnplanner/planner -v2 -d ") + domain + std::string(" -p ") + path + std::string("/planningfiles/lastPlan.pddl"));
   outPlan = exec(path + std::string("/htnplanner/planner -v2 -d ") + domain + std::string(" -p ") + path + std::string("/planningfiles/lastPlan.pddl"));
   size_t pos = 0;
   std::vector<std::string> tokens;
@@ -106,6 +92,8 @@ int main(int argc, char **argv){
 
   path = ros::package::getPath("ros_htn");
   domain = path + "/planningfiles/domain.pddl";
+
+  ROS_INFO_STREAM(domain);
 
   ros::ServiceServer planService = nhandler.advertiseService("htn_planner_server", plan);
 

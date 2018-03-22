@@ -1,0 +1,9 @@
+<launch>
+
+  <arg name="domain" default="$(find ros_htn)/planningfiles/domain.pddl"/>
+
+  <node name="plan_service_node" pkg="ros_htn" type="plan_server"/>
+  <node name="domain_updater_node" pkg="ros_htn" type="domain_setter">
+    <param name="inParam" value="$(arg domain)"/>
+  </node>
+</launch>

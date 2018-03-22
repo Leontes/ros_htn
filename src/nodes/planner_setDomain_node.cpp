@@ -4,39 +4,30 @@
 
 #include <fstream>
 
+#include "executecommand.hpp"
 
-std::string domain, path;
-
-void copyDomain(std::string dfile){
-  domain = path + "/planningfiles/domain.pddl";
-  std::ifstream inputDomain(dfile);
-  std::ofstream outputDomain(domain);
-
-  std::string line;
-  while(!inputDomain.eof()){
-    std::getline(inputDomain, line);
-    outputDomain << line << std::endl;
-  }
-
-  inputDomain.close();
-  outputDomain.close();
-}
+std::string path;
 
 void updateDomainCB(const std_msgs::String::ConstPtr& msg){
   ROS_INFO_STREAM("New domain file: " + msg -> data);
-  copyDomain(msg -> data);
+  exec("cp " + msg -> data + " " + path + "/planningfiles/domain.pddl");
 }
 
 
 int main(int argc, char *argv[]) {
   path = ros::package::getPath("ros_htn");
 
-  if(argc > 1){
-    copyDomain(std::string(argv[1]));
-  }
+  std::string inDom;
 
   ros::init(argc, argv, "htn_domain_updater");
   ros::NodeHandle nhandler;
+
+  nhandler.getParam("/domain_updater_node/inParam", inDom);
+
+  if( inDom != (path + "/planningfiles/domain.hpp")){
+    exec("cp " + inDom + " " + path + "/planningfiles/domain.hpp");
+  }
+
   ros::Subscriber sub = nhandler.subscribe("dom_updater", 1000, updateDomainCB);
 
   ros::spin();
