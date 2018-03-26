@@ -14,4 +14,4 @@ ROS_HTN is a Hierarchical Tasks Planner for the Robotic Operative System (ROS). 
 
 
 ## References
-[@Castillo2006]: (http://www.aaai.org/Papers/ICAPS/2006/ICAPS06-007.pdf) Castillo, L. A., Fernández-Olivares, J., Garcia-Perez, O., & Palao, F. (2006, June). Efficiently Handling Temporal Knowledge in an HTN Planner. In ICAPS (pp. 63-72).
+[@Castillo2006]: http://www.aaai.org/Papers/ICAPS/2006/ICAPS06-007.pdf Castillo, L. A., Fernández-Olivares, J., Garcia-Perez, O., & Palao, F. (2006, June). Efficiently Handling Temporal Knowledge in an HTN Planner. In ICAPS (pp. 63-72).
