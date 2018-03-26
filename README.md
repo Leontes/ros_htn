@@ -11,8 +11,14 @@ ROS_HTN is a Hierarchical Tasks Planner for the Robotic Operative System (ROS). 
 * GCC with C++11
 
 ## Installation <a id="installation"></a>
-
-
+Starting in a ROS Workspace folder, type:
+'''bash
+cd src/
+git clone https://github.com/Leontes/ros_htn.git
+cd ..
+rosdep install --from-paths src --ignore-src -r -y
+catkin_make
+'''
 
 
 
