@@ -1,5 +1,5 @@
 # ROS_HTN
-ROS_HTN is a Hierarchical Tasks Planner for the Robotic Operative System (ROS). ROS_HTN contains the functionality needed to solve planning problems in PDDL 2.1 using the HPDL extension [@Castillo2006](#castillo2006)
+ROS_HTN is a Hierarchical Tasks Planner for the Robotic Operative System (ROS). ROS_HTN contains the functionality needed to solve planning problems in PDDL 2.1 using the HPDL extension [\[Castillo2006\]](#castillo2006)
 ## Requirements
 * Ubuntu 16.04
 * ROS Kinetic Kame
