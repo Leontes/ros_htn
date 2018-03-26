@@ -1,12 +1,16 @@
 # ROS_HTN
-ROS_HTN is a Hierarchical Tasks Planner for the Robotic Operative System (ROS). ROS_HTN contains the functionality needed to solve planning problems in PDDL 2.1 using the HPDL extension [\[Castillo2006\]](#castillo2006)
-## Requirements
+ROS_HTN is a Hierarchical Tasks Planner for the Robotic Operative System (ROS). ROS_HTN contains the functionality needed to solve planning problems in PDDL 2.1 using the HPDL extension [\[Castillo2006\]](#castillo2006) in a ROS nodes architecture. ROS_HTN contains 2 nodes: **plan_service_node** the ros service responsible for calling the HTN planner and return a plan, and **domain_updater_node** the node used to update the planner's domain.
+
+## Table of Contents
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+
+## Requirements <a id="requirements"></a>
 * Ubuntu 16.04
 * ROS Kinetic Kame
-* d
-* d
+* GCC with C++11
 
-## Install
+## Installation <a id="installation"></a>
 
 
 
